@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Roboto Light'), local('Roboto-Light'), url(https://gstatic.loli.net/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fBBc9.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://gstatic.loli.net/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Roboto Medium'), local('Roboto-Medium'), url(https://gstatic.loli.net/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc9.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url(https://gstatic.loli.net/s/robotomono/v5/L0x5DF4xlVMF-BfR8bXMIjhLq3o.ttf) format('truetype');
+}
+
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, Verdana, "Noto Sans SC", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans", "Microsoft YaHei UI", "Microsoft Yahei", sans-serif;
+  font-weight: 400;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+pre, code, kbd, samp {
+  font-family: mononoki, "Roboto Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace, "PingFang SC", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Arial", "Verdana", "Noto Sans SC", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans", "Microsoft YaHei UI", "Microsoft Yahei", sans-serif;
+  font-weight: normal;
+}

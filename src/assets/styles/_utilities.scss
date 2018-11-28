@@ -1,0 +1,28 @@
+a {
+    text-decoration: none;
+}
+
+li {
+    padding-left: 0;
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+.container {
+    max-width: $base-container-width;
+    margin: 0 auto;
+    // @include clearfix;
+}
