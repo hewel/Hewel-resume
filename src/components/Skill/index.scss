@@ -1,0 +1,116 @@
+@import '../../assets/styles/variables';
+.skill-card {
+    display: flex;
+    align-items: center;
+    height: size-count(4, 3);
+    width: $skill-box-width;
+    margin: {
+        bottom: 2.4rem;
+        left: 2.4rem;
+        right: 2.4rem;
+    } 
+    .skill-icon {
+        float: left;
+        width: $icon-size;
+        height: $icon-size;
+        margin-right: 2.4rem;
+        @include clearfix();
+        svg.icon {
+            width: $icon-size;
+            height: $icon-size;
+        }
+    }
+    .skill-title {
+        font-size: 2.4rem;
+        padding: 1.2rem 0;
+    }
+    .skill-desc {
+        float: left;
+        width: $skill-box-width - $icon-size - 2.4rem;
+        @include clearfix();
+    }
+    .skill-exp {
+        .exp-title {
+            display: block;
+            color: #607D8B;
+            margin-bottom: .6rem;
+            font-weight: 500;
+            font-size: 1.4rem;
+        }
+        .exp-bar {
+            display: flex;
+            position: relative;
+            width: $skill-box-width - $icon-size - 2.4rem;
+            flex-direction: column;
+            border-radius: .6rem;
+            align-items: flex-end;
+            justify-content: center;
+            .progress-rail {
+                position: absolute;
+                width: 80%;
+                height: 1.2rem;
+                align-self: flex-start;
+                background-color: #ECEFF1;
+                border-radius: inherit;
+                .progress-bar {
+                    position: absolute;
+                    width: 0;
+                    height: 100%;
+                    border-radius: inherit;
+                    background-color: $base-font-color;
+                }
+            }
+            @mixin grade($level) {
+                $colors: #b7eb8f, #87e8de, #91d5ff, #adc6ff, #d3adf7;
+                $shadows: #95de64, #5cdbd3, #69c0ff, #85a5ff, #b37feb;
+                $color: nth($colors, $level);
+                $shadow: nth($shadows, $level);
+                .progress-bar {
+                    width: $level * 20%;
+                    background-color: $color;
+                    box-shadow: 0 2px 8px transparentize($shadow, 0.3);
+                }
+                .exp-grade {
+                    background-color: $color;
+                    border-color: $color;
+                    box-shadow: 0 2px 8px transparentize($shadow, 0.5);
+                }
+            }
+            &.grade-a {
+                @include grade(1);
+            }
+            &.grade-b {
+                @include grade(2);
+            }
+            &.grade-c {
+                @include grade(3);
+            }
+            &.grade-d {
+                @include grade(4);
+            }
+            &.grade-e {
+                @include grade(5);
+            }
+        }
+        .exp-grade {
+            position: relative;
+            background-color: #34495e;
+            color: #fefefe;
+            font-weight: 300;
+            padding: .6rem .8rem;
+            font-size: 1.2rem;
+            border-radius: .6rem;
+            border-color: #34495e;
+            // &::before {
+            //     content: '';
+            //     position: absolute;
+            //     border: .4rem solid transparent;
+            //     border-right-color: inherit;
+            //     top: 50%;
+            //     left: -.8rem;
+            //     -webkit-transform: translate3d(0, -50%, 0);
+            //     transform: translate3d(0, -50%, 0);
+            // }
+        }
+    }
+}

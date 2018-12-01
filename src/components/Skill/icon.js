@@ -2,7 +2,7 @@ import upperfirst from 'lodash.upperfirst';
 import iconCss from '../../assets/icon/css.svg';
 import iconGit from '../../assets/icon/git.svg';
 import iconHtml from '../../assets/icon/HTML5.svg';
-import iconJs from '../../assets/icon/javascript.svg';
+import iconJavascript from '../../assets/icon/javascript.svg';
 import iconNode from '../../assets/icon/Nodejs.svg';
 import iconNpm from '../../assets/icon/npm.svg';
 import iconPug from '../../assets/icon/pug.svg';
@@ -15,7 +15,7 @@ const iconObj = {
     iconCss,
     iconGit,
     iconHtml,
-    iconJs,
+    iconJavascript,
     iconNode,
     iconNpm,
     iconPug,

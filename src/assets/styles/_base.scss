@@ -8,12 +8,15 @@ body {
     font-size: $root-font-size;
     font-weight: 400;
     color: $base-font-color;
+    overflow: hidden;
 }
 
 * {
     box-sizing: border-box;
+    line-height: 1;
 }
 
 #root {
+    
     font-size: $base-font-size;
 }

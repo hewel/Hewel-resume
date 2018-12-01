@@ -1,7 +1,7 @@
 $base-background-color: #fafafa;
 $base-foreground-color: #fefefe;
 $base-main-color: #01AFFF;
-$base-sub-color: #526EFE;
+$base-sub-color: #526efe;
 $base-font-color: #34495e;
 $shadow-color: rgba(10, 38, 61, 0.6);
 
@@ -11,7 +11,7 @@ $root-gutter-size: 2.4rem;
 $root-vertical-size: 1.6rem;
 
 @function size-count($column: 1, $gutter: 1) {
-  @return $root-column-size * $column + $root-gutter-size * $gutter;
+    @return $root-column-size * $column+$root-gutter-size * $gutter;
 }
 
 $base-font-size: 1.6rem;
@@ -19,9 +19,22 @@ $base-container-width: size-count(24, 23);
 $header-height: 12rem;
 $logo-size: size-count(2, 1);
 $logo-title-size: 3.2rem;
-$icon-size: size-count(4, 3);
+$icon-size: size-count(3, 2);
 $slide-width: size-count(18, 17);
 $homepage-padding-top: $root-vertical-size * 2;
 $homepage-padding-bottom: $homepage-padding-top;
+$box-margin-top: $root-vertical-size * 2;
+$profile-box-width: size-count(13, 12);
+$profile-box-height: $root-vertical-size * 24;
+$profile-margin-right: size-count(1, 2);
+$skill-box-width: size-count(11, 10);
 
-$cord-shadow: 0 2px 8px $shadow-color;
+$card-shadow: 0 2px 8px $shadow-color;
+
+@mixin clearfix() {
+    &::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}

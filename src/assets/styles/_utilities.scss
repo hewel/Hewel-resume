@@ -13,16 +13,29 @@ h3,
 h4,
 h5,
 h6 {
+    font-weight: 400;
+}
+h2 {
+    font-size: 3.8rem;
     font-weight: 300;
+    line-height: 4.6rem;
 }
 
 button {
     cursor: pointer;
 }
 
+p {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    margin: {
+        left: 0;
+        top: 0;
+        bottom: 1.6rem;
+        right: 0;
+    }
+}
 
-.container {
-    max-width: $base-container-width;
-    margin: 0 auto;
-    // @include clearfix;
+span {
+    display: block;
 }
