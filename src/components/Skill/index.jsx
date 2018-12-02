@@ -19,16 +19,18 @@ class Skill extends Component {
         this.cardEl = el;
     };
     render() {
-        const { name } = this.props;
+        const { name, isScrolled } = this.props;
         const title = upperfirst(name) || 'Empty';
         const skill = getSkill(name);
         const { detail, level } = skill;
         const grade = this.getLevel(level);
         const barClass = this.getClassName(level);
+        const cardClass = isScrolled ? `skill-card scrolled` : `skill-card`;
+        const progressClass = isScrolled ? `progress-bar scrolled` : `progress-bar`;
         const iconSrc = getIcon(name);
         
         return (
-            <div className="skill-card" ref={this.getCardEl}>
+            <div className={cardClass} ref={this.getCardEl}>
                 <ReactSVG
                     className={`skill-icon icon-${name}`} 
                     src={iconSrc}
@@ -40,7 +42,7 @@ class Skill extends Component {
                         <span className="exp-title">掌握程度:</span>
                         <span className={`exp-bar ${barClass}`}>
                             <span className="progress-rail">
-                                <span className="progress-bar"></span>
+                                <span className={progressClass}></span>
                             </span>
                             <span className="exp-grade">{grade}</span>
                         </span>
@@ -52,7 +54,8 @@ class Skill extends Component {
 }
 
 Skill.protoTypes = {
-    name: PropTypes.string
+    name: PropTypes.string,
+    isScrolled: PropTypes.bool
 };
 
 export default Skill;

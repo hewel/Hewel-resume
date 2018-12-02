@@ -1,4 +1,48 @@
 @import '../../assets/styles/variables';
+
+$easeOutCubic : cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$cardAnimationDuration: 800ms;
+@mixin fadeIn() {
+    $animation-name: unique-id();
+    animation-name: $animation-name;
+    animation-duration: $cardAnimationDuration;
+    animation-timing-function: $easeOutCubic;
+    @keyframes #{$animation-name} {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 5rem, 0);
+        }
+        20% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+}
+@mixin fadeOut() {
+   $animation-name: unique-id();
+   animation-name: $animation-name;
+   animation-duration: $cardAnimationDuration - 600ms;
+   animation-timing-function: $easeOutCubic;
+
+   @keyframes #{$animation-name} {
+       0% {
+           opacity: 1;
+           transform: translate3d(0, 0, 0);
+       }
+
+       80% {
+           opacity: 0;
+       }
+
+       100% {
+           opacity: 0;
+           transform: translate3d(0, 5rem, 0);
+       }
+   }
+}
 .skill-card {
     display: flex;
     align-items: center;
@@ -8,7 +52,15 @@
         bottom: 2.4rem;
         left: 2.4rem;
         right: 2.4rem;
-    } 
+    }
+    opacity: 0;
+    animation-fill-mode: both;
+    &.scrolled:nth-child(even) {
+        animation-delay: 200ms;
+    }
+    &.scrolled {
+        @include fadeIn();
+    }
     .skill-icon {
         float: left;
         width: $icon-size;
@@ -66,14 +118,37 @@
                 $color: nth($colors, $level);
                 $shadow: nth($shadows, $level);
                 .progress-bar {
-                    width: $level * 20%;
+                    // width: $level * 20%;
                     background-color: $color;
                     box-shadow: 0 2px 8px transparentize($shadow, 0.3);
+                    animation-timing-function: $easeOutCubic;
+                    animation-fill-mode: both;
+                    animation-delay: $cardAnimationDuration;
+                    &:nth-child(even) {
+                        animation-delay: $cardAnimationDuration + 200ms;
+                    }
+                    &.scrolled {
+                        @include pullLeft($level);
+                    }
                 }
                 .exp-grade {
                     background-color: $color;
                     border-color: $color;
                     box-shadow: 0 2px 8px transparentize($shadow, 0.5);
+                }
+            }
+            @mixin pullLeft($level) {
+                $animation-name: unique-id();
+                $duration: 200ms;
+                animation-name: $animation-name;
+                animation-duration: $duration * $level;
+                @keyframes #{$animation-name} {
+                    0% {
+                        width: 0%
+                    }
+                    100% {
+                        width: $level * 20%;
+                    }
                 }
             }
             &.grade-a {
