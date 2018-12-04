@@ -10,6 +10,8 @@ import iconReact from '../../assets/icon/react.svg';
 import iconSass from '../../assets/icon/sass.svg';
 import iconVue from '../../assets/icon/vue.svg';
 import iconWebpack from '../../assets/icon/Webpack.svg';
+import iconPhotoshop from '../../assets/icon/Photoshop.svg';
+import iconXd from '../../assets/icon/Xd.svg';
 
 const iconObj = {
     iconCss,
@@ -22,9 +24,17 @@ const iconObj = {
     iconReact,
     iconSass,
     iconVue,
-    iconWebpack
+    iconWebpack,
+    iconPhotoshop,
+    iconXd
 };
-export default function getIcon(name = String()) {
-    let iconName = `icon${upperfirst(name)}`;
-    return iconObj[iconName];
+class Icon {
+    constructor(props) {
+        this.icons = props;
+    }
+    getIcon = (name = String()) => {
+        let iconName = `icon${upperfirst(name)}`;
+        return this.icons[iconName];
+    }
 }
+export default new Icon(iconObj).getIcon;

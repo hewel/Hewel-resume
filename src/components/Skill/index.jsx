@@ -7,6 +7,9 @@ import getSkill from './content';
 import './index.scss';
 
 class Skill extends Component {
+    state = {
+        isScrolled: false
+    }
     getLevel(level) {
         const gradeArr = ['登堂入室', '渐入佳境', '融会贯通', '登峰造极', '出神入化'];
         return gradeArr[level - 1] || '不值一提';
@@ -18,8 +21,19 @@ class Skill extends Component {
     getCardEl = el => {
         this.cardEl = el;
     };
+
+    componentDidMount = () => {
+        this.timer = setTimeout(() => {
+            this.setState({ isScrolled: true });
+        }, this.props.delay);
+    }
+    componentWillUnmount = () => {
+        clearTimeout(this.timer);
+    }
+    
     render() {
-        const { name, isScrolled } = this.props;
+        const { name } = this.props;
+        const { isScrolled } = this.state;
         const title = upperfirst(name) || 'Empty';
         const skill = getSkill(name);
         const { detail, level } = skill;
@@ -55,6 +69,7 @@ class Skill extends Component {
 
 Skill.protoTypes = {
     name: PropTypes.string,
+    delay: PropTypes.number,
     isScrolled: PropTypes.bool
 };
 

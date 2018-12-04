@@ -42,13 +42,27 @@ const content = {
     webpack: {
         level: 2,
         detail: `了解 Webpack 的基本作用，在使用 Vue-cil、create-react-app 脚手架时接触过 Webpack，能进行简单的配置。`
+    },
+    photoshop: {
+        level: 5,
+        detail: `使用 Photoshop 的经验丰富，擅长 logo 设计和 UI 设计，曾获得搜狗官方和 UI 中国举办的搜狗输入法皮肤大赛优秀奖。`
+    },
+    xd: {
+        level: 4,
+        detail: `经常使用 Adobe Xd 进行原型设计，可以快速布局网页结构，提高前端开发效率。`
     }
 }
-const empty = {
-    level: 0,
-    detail: ''
+class Content {
+    constructor(props) {
+        this.contents = props;
+    }
+    getSkill = name => {
+        const empty = {
+            level: 0,
+            detail: ''
+        };
+        return this.contents[name] || empty;
+    }
 }
 
-export default function getSkill(name) {
-    return content[name] || empty;
-}
+export default new Content(content).getSkill;

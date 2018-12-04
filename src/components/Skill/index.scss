@@ -55,9 +55,6 @@ $cardAnimationDuration: 800ms;
     }
     opacity: 0;
     animation-fill-mode: both;
-    &.scrolled:nth-child(even) {
-        animation-delay: 200ms;
-    }
     &.scrolled {
         @include fadeIn();
     }
@@ -113,28 +110,32 @@ $cardAnimationDuration: 800ms;
                 }
             }
             @mixin grade($level) {
+                $names: 'a', 'b', 'c', 'd', 'e';
                 $colors: #b7eb8f, #87e8de, #91d5ff, #adc6ff, #d3adf7;
                 $shadows: #95de64, #5cdbd3, #69c0ff, #85a5ff, #b37feb;
+                $name: nth($names, $level);
                 $color: nth($colors, $level);
                 $shadow: nth($shadows, $level);
-                .progress-bar {
-                    // width: $level * 20%;
-                    background-color: $color;
-                    box-shadow: 0 2px 8px transparentize($shadow, 0.3);
-                    animation-timing-function: $easeOutCubic;
-                    animation-fill-mode: both;
-                    animation-delay: $cardAnimationDuration;
-                    &:nth-child(even) {
-                        animation-delay: $cardAnimationDuration + 200ms;
+                &.grade-#{$name} {
+                    .progress-bar {
+                        // width: $level * 20%;
+                        background-color: $color;
+                        box-shadow: 0 2px 8px transparentize($shadow, 0.3);
+                        animation-timing-function: $easeOutCubic;
+                        animation-fill-mode: both;
+                        animation-delay: $cardAnimationDuration;
+                        &:nth-child(even) {
+                            animation-delay: $cardAnimationDuration + 100ms;
+                        }
+                        &.scrolled {
+                            @include pullLeft($level);
+                        }
                     }
-                    &.scrolled {
-                        @include pullLeft($level);
+                    .exp-grade {
+                        background-color: $color;
+                        border-color: $color;
+                        box-shadow: 0 2px 8px transparentize($shadow, 0.5);
                     }
-                }
-                .exp-grade {
-                    background-color: $color;
-                    border-color: $color;
-                    box-shadow: 0 2px 8px transparentize($shadow, 0.5);
                 }
             }
             @mixin pullLeft($level) {
@@ -151,20 +152,8 @@ $cardAnimationDuration: 800ms;
                     }
                 }
             }
-            &.grade-a {
-                @include grade(1);
-            }
-            &.grade-b {
-                @include grade(2);
-            }
-            &.grade-c {
-                @include grade(3);
-            }
-            &.grade-d {
-                @include grade(4);
-            }
-            &.grade-e {
-                @include grade(5);
+            @for $var from 1 to 6 {
+                @include grade($var);
             }
         }
         .exp-grade {
